@@ -1,0 +1,23 @@
+{
+  "name": "webtesting-i-challenge",
+  "version": "1.0.0",
+  "description": "lambda school webtesting",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^26.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elijah-atkins/webtesting-i-challenge.git"
+  },
+  "author": "elijah atkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elijah-atkins/webtesting-i-challenge/issues"
+  },
+  "homepage": "https://github.com/elijah-atkins/webtesting-i-challenge#readme"
+}
