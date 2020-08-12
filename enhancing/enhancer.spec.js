@@ -4,7 +4,7 @@ const enhancer = require("./enhancer.js");
 const sword = {
   name: "sword",
   durability: 10,
-  enhancment: 17,
+  enhancment: 16,
 };
 const hammer = {
   name: "hammer",
@@ -48,7 +48,7 @@ describe("Enhancer tests", () => {
     test("Success adds one to enhancement", () => {
       expect(enhancer.success(sword)).toStrictEqual({
         ...sword,
-        enhancment: 18,
+        enhancment: 17,
       });
       expect(enhancer.success(hammer)).toStrictEqual({
         ...hammer,
@@ -64,6 +64,9 @@ describe("Enhancer tests", () => {
     test("Fail will subtract 5 from enhancement less than 15", () => {
       expect(enhancer.fail(hammer)).toEqual({ ...hammer, enhancment: 3 });
     });
+    test("Fail will subtract 10 from enhancement 15 or 16", () => {
+      expect(enhancer.fail(sword)).toEqual({ ...sword, enhancment: 6 });
+    });
     test("Fail will not reduce enhancement more than 0", () => {
       expect(enhancer.fail(stick)).toEqual({ ...stick, enhancment: 0 });
       expect(enhancer.fail(stickHeavy)).toEqual({
@@ -72,14 +75,14 @@ describe("Enhancer tests", () => {
       });
     });
     test("Fail will decrease enhancement by one if greater than 16", () => {
-      expect(enhancer.fail(sword)).toEqual({ ...sword, enhancment: 16 });
+      expect(enhancer.fail(wand)).toEqual({ ...wand, enhancment: 19 });
     });
   });
 });
 
 describe("Stretch Get tests", () => {
   test("Get will add enhancement level before item name", () => {
-    expect(enhancer.get(sword)).toEqual({ ...sword, name: "[+17] sword" });
+    expect(enhancer.get(sword)).toEqual({ ...sword, name: "[+16] sword" });
     expect(enhancer.get(hammer)).toEqual({ ...hammer, name: "[+8] hammer" });
     expect(enhancer.get(wand)).toEqual({ ...wand, name: "[+20] wand" });
   });

@@ -12,14 +12,16 @@ function success(item) {
 
 function fail(item) {
   let enhance = item.enhancment;
+
   if (enhance < 15) {
-    enhance = Math.max(enhance - 5, 0);
-  } else if (enhance < 17) {
+    enhance -= 5;
+  } else if (enhance > 15 && enhance < 17) {
     enhance -= 10;
   } else {
     enhance -= 1;
   }
-  return { ...item, enhancment: enhance };
+
+  return { ...item, enhancment: Math.max(enhance, 0) };
 }
 
 function repair(item) {
